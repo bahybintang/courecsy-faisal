@@ -2,12 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 import requests
 from isodate import parse_duration, parse_date
+import logging
 
 from pipeline import lower, remove_punctuation, remove_stopwords, preprocessing, stem_text, lemmatize_text
 from csim import createVocab, coSim
 from dataset import Silabus
 
 app = Flask(__name__)
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 data_silabus = Silabus()
 
