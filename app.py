@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 import requests
 from isodate import parse_duration, parse_date
+import sys
 import logging
 
 from pipeline import lower, remove_punctuation, remove_stopwords, preprocessing, stem_text, lemmatize_text
