@@ -8,7 +8,7 @@
   <body>
     <div class="container">
         {% block body %}
-            <h1>Edit Article</h1>
+            <h3 style="text-align:center;">Pilih silabus pada checkbox atau tulis pada form <strong>Body</strong> jika ada silabus yang ingin ditambahkan</h3>
             {% from "includes/_formhelpers.html" import render_field %}
             <form method="POST" action="">
                 <div class="form-group">
@@ -27,7 +27,9 @@
                 <div class="form-group">
                 {{ render_field(form.body, class_="form-control", id="editor") }}
                 </div>
-
+                
+                <br>
+                <h4>Pilih durasi video dan tanggal publikasi video (opsional)</h4>
                 <p>Pilih durasi video:</p>
                 <input type="radio" id="any" name="durasi" value="any" checked="checked">
                 <label for="any">Any (durasi video bebas)</label><br>
