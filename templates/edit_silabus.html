@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sistem Rekomendasi Video Pembelajaran Online</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+        {% block body %}
+            <h1>Edit Article</h1>
+            {% from "includes/_formhelpers.html" import render_field %}
+            <form method="POST" action="">
+                <div class="form-group">
+                {{ render_field(form.title, class_="form-control", readonly=true) }}
+                </div>
+                
+                <br>
+                <p><strong>Silabus</strong></p>
+                {% for x in article['silabus_list'] %}
+                  <input type="checkbox" name="silabus" value="{{ x }}">
+                  {{ x }}<br>
+                  <!-- <label for="silabus"></label>{{ x }}</label><br> -->
+                {% endfor %}
+                <br>
+
+                <div class="form-group">
+                {{ render_field(form.body, class_="form-control", id="editor") }}
+                </div>
+
+                <p>Pilih durasi video:</p>
+                <input type="radio" id="any" name="durasi" value="any" checked="checked">
+                <label for="any">Any (durasi video bebas)</label><br>
+                <input type="radio" id="long" name="durasi" value="long">
+                <label for="long">Long (lebih dari 20 menit)</label><br>
+                <input type="radio" id="medium" name="durasi" value="medium">
+                <label for="medium">Medium (antara 4 dan 20 menit)</label><br>
+                <input type="radio" id="short" name="durasi" value="short">
+                <label for="short">Short (kurang dari 4 menit)</label><br><br>
+
+                <p>Tanggal publikasi (menampilkan video sebelum tanggal publikasi):</p>
+                <input type="date" id="tanggal" name="tanggal"><br><br>
+
+                <p><input class="btn btn-primary" type="submit" value="Submit"></p>
+            </form>
+        {% endblock %}
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+      CKEDITOR.replace('editor')
+    </script>
+  </body>
+</html>
