@@ -124,7 +124,9 @@ def edit_article(id):
         docs.append(search_params["q"])
 
         for video in videos:
-            docs.append(video["description"])
+            docs.append(preprocessing(video["description"]))
+
+        print(docs)
         
         cosine_similairty = coSim(docs)
 

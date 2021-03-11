@@ -35,11 +35,16 @@ def preprocessing(text):
     text = remove_stopwords(text)
     return text
 
-
 def stem_text(text):
     text = ' '.join([stm.stem(word) for word in text.split()])
     return text
 
+def preproc_stem(text):
+    text = lower(text)
+    text = remove_punctuation(text)
+    text = remove_stopwords(text)
+    text = stem_text(text)
+    return text
 
 def lemmatize_text(text):
     text = ' '.join([lmtz.lemmatize(word) for word in text.split()])
