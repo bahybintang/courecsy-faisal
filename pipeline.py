@@ -32,7 +32,7 @@ def remove_stopwords(text):
 def preprocessing(text):
     text = lower(text)
     text = remove_punctuation(text)
-    text = remove_stopwords(text)
+    #text = remove_stopwords(text)
     return text
 
 def stem_text(text):
