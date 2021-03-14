@@ -86,7 +86,7 @@ def Silabus():
             'silabus_list':["Probability Models and Axioms Conditioning and Bayes' Rule Independence.","Discrete Random Variables: Probability Mass Functions, Expectations, Discrete Random Variable Examples, Joint PMFs.","Continuous Random Variables: Multiple Continuous Random Variables, Continuous Bayes' Rule.","Derived Distributions; Convolution; Covariance and Correlation.","Iterated Expectations; Sum of a Random Number of Random Variables.","Bernoulli Process.","Poisson Process.","Markov Chains.","Weak Law of Large Numbers.","Central Limit Theorem.","Bayesian Statistical Inference.","Classical Inference."]
         },
         {
-            'title':'Language and Automaton',
+            'title':'Language and Automata',
             'silabus':'T',
             'silabus_list':["Grammar, language, automata (strings and languages, some basic terms, basic language operations, grammar, grammar equivalent, Chomsky Hierarchy of Grammars, automata).","Finite Automata (description, deterministic finite automata (DFA), Transition Graph, language and DFA, regular language, non-deterministic finite automata (NFA), NFA languages, epsilon-NFA, DFA and NFA equivalents, conversion from NFA to DFA ).","Regular and regular grammar languages","Context-free grammars (description, leftmost derivation and rightmost derivation, derivation trees, partial derivation trees, parsing, ambiguity, simple grammar, simplification of CFG, substitution rules).","Pushdown automaton","Turing machine and computability","Computability (computability, computability relation with Turing machine, undecidability, recursive language, enumerable recursive language, non-recursive language, non-recursively enumerable language)."]
         },
