@@ -31,11 +31,6 @@ def Silabus():
             'silabus_list':["The nature of computers and code, what they can and can not do, the story of Ada Lovelace's work","Information Theory: Shanon theorem, etc.","How computer hardware works: chips, cpu, memory, disk","Bits, bytes, megabytes, gigabytes","Number representation, binary representation, floating point","Computer code: loops and logic, How structured data works","How software works: what is a program, what is 'r Neural Networksing'","How digital images work, Digital media, images, sounds, video, compression","How the internet works: ip address, routing, ethernet, wi-fi","Computer security: viruses, trojans, and passwords","Analog vs. Digital","Big ideas: abstraction, logic, bugs","Computer science as a science"]
         },
         {
-            'title':'Pancasila',
-            'silabus':'T',
-            'silabus_list':["The foundation and definition of Pancasila education","Formulation of Pancasila","Preamble to the 1945 Constitution","Position and function of Pancasila","The shape and structure of Pancasila","The content and meaning of Pancasila, the 1945 Constitution","Implementation of Pancasila."]
-        },
-        {
             'title':'Calculus II',
             'silabus':'T',
             'silabus_list':["Indefinite integral: definition, properties, integrating techniques.","Definite Integral: definition, properties, Fundamental Theory of Calculus, changing variables. Improper integral.","Some examples of specific integral applications: flat area, rotary volume, arc length, swirl area, center of mass / center, Pappus-Guldin Theorem, moment of inertia, Parallel Axis Theorem."]
