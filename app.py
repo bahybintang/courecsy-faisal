@@ -63,7 +63,7 @@ def edit_article(id):
 
         if tanggal == "":
             search_params = {
-                "key" : "AIzaSyACgxBCv_465Lqk7NfBGT-HjcSiJ_YjTRI",
+                "key" : "AIzaSyCRFSkTA51tWW2REAsVUVPZNglFLnBuyMM",
                 "q" : preprocessing(query),
                 "part" : "snippet",
                 "maxResults" : 50,
@@ -72,7 +72,7 @@ def edit_article(id):
             }
         else :
             search_params = {
-                "key" : "AIzaSyACgxBCv_465Lqk7NfBGT-HjcSiJ_YjTRI",
+                "key" : "AIzaSyCRFSkTA51tWW2REAsVUVPZNglFLnBuyMM",
                 "q" : preprocessing(query),
                 "part" : "snippet",
                 "maxResults" : 50,
@@ -94,7 +94,7 @@ def edit_article(id):
             video_ids.append(result["id"]["videoId"])
 
         video_params = {
-            "key" : "AIzaSyACgxBCv_465Lqk7NfBGT-HjcSiJ_YjTRI",
+            "key" : "AIzaSyCRFSkTA51tWW2REAsVUVPZNglFLnBuyMM",
             "id" : ",".join(video_ids),
             "part" : "snippet, contentDetails",
             "maxResults" : 50

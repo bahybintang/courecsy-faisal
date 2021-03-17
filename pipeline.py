@@ -21,7 +21,7 @@ def remove_punctuation(text):
     text = re.sub(r'<.+?>', ' ', text)
 
     # hialangkan simbol
-    text = re.sub(r'[^\w\s]+', ' ', text)
+    text = re.sub(r'[^\w\s+]', ' ', text)
     return text
 
 
