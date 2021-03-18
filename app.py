@@ -56,10 +56,10 @@ def edit_article(id):
         box_to_text = ' '.join(box)
         query = title + " " + box_to_text + " " + body
 
-        print(type(body))
+        """print(type(body))
         print(body)
         print(box)
-        print("query yang diinput : " + query)
+        print("query yang diinput : " + query)"""
 
         if tanggal == "":
             search_params = {
@@ -126,7 +126,7 @@ def edit_article(id):
         for video in videos:
             docs.append(preprocessing(video["description"]))
 
-        print(docs)
+        #print(docs)
         
         cosine_similairty = coSim(docs)
 
