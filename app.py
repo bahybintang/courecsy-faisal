@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 import requests
 from isodate import parse_duration, parse_date
@@ -52,6 +52,11 @@ def edit_article(id):
         body = request.form['body']
         durasi = request.form['durasi']
         tanggal = request.form['tanggal']
+
+        if len(box) == 0 and body == "":
+            flash('Form checkbox silabus dan body masih kosong, mohon isi salah satu atau keduanya', 'danger')
+            urla = id
+            return redirect(urla)
         
         box_to_text = ' '.join(box)
         query = title + " " + box_to_text + " " + body
@@ -63,7 +68,7 @@ def edit_article(id):
 
         if tanggal == "":
             search_params = {
-                "key" : "AIzaSyCCmLV6KrNBhsQmpc5CVdsRCvKfrKxayuA",
+                "key" : "AIzaSyC1jbZB6J6kQMPA6A1DDGUyDlQ2VPTYX98",
                 "q" : preprocessing(query),
                 "part" : "snippet",
                 "maxResults" : 50,
@@ -72,7 +77,7 @@ def edit_article(id):
             }
         else :
             search_params = {
-                "key" : "AIzaSyCCmLV6KrNBhsQmpc5CVdsRCvKfrKxayuA",
+                "key" : "AIzaSyC1jbZB6J6kQMPA6A1DDGUyDlQ2VPTYX98",
                 "q" : preprocessing(query),
                 "part" : "snippet",
                 "maxResults" : 50,
@@ -94,7 +99,7 @@ def edit_article(id):
             video_ids.append(result["id"]["videoId"])
 
         video_params = {
-            "key" : "AIzaSyCCmLV6KrNBhsQmpc5CVdsRCvKfrKxayuA",
+            "key" : "AIzaSyC1jbZB6J6kQMPA6A1DDGUyDlQ2VPTYX98",
             "id" : ",".join(video_ids),
             "part" : "snippet, contentDetails",
             "maxResults" : 50
@@ -145,4 +150,5 @@ def rekomendasi():
     return render_template('rekomendasi.html')
 
 if __name__ == "__main__":
+    app.secret_key='secret123'
     app.run(debug = True)
