@@ -22,6 +22,10 @@ def remove_punctuation(text):
 
     # hialangkan simbol
     text = re.sub(r'[^\w\s+]', ' ', text)
+    text = re.sub(r'[0-9]+', ' ', text)
+    
+    # hilangkan huruf yang panjangnya karakternya 1
+    text = ' '.join([word for word in text.split() if len(word)>1])
     return text
 
 

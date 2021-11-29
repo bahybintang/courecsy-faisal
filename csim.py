@@ -15,9 +15,7 @@ def createVocab(docs):
     for doc in docs:
         """print("before preprocessed")
         print(doc)"""
-        #doc= doc.translate(str.maketrans('', '', string.punctuation))
-        #words= word_tokenize(doc.lower())
-        doc = preprocessing(doc)
+        #doc = preprocessing(doc)
         """print("after preprocessed")
         print(doc)
         print()"""
@@ -29,7 +27,8 @@ def createVocab(docs):
                 vocab[word] =1 
     return vocab
 
-def coSim(docs):
+
+def TF_IDF_Cosim(docs):
     vocab = createVocab(docs)
     """print("bag of word dan jumlah katanya / TF normal :")
     print(vocab)
@@ -38,15 +37,13 @@ def coSim(docs):
     #Compute document term matrix as well idf for each term 
     docsTFMat = np.zeros((len(docs),len(vocab)))
 
-    docsIdfMat = np.zeros((len(vocab),len(docs)))
+    #docsIdfMat = np.zeros((len(vocab),len(docs)))
 
     docTermFreq = pd.DataFrame(docsTFMat ,columns=sorted(vocab.keys())) #Ini adalah TF
 
     docCount=0
     for doc in docs:
-        #doc= doc.translate(str.maketrans('', '', string.punctuation))
-        #words= word_tokenize(doc.lower())
-        doc = preprocessing(doc)
+
         words = word_tokenize(doc)
         for word in words:
             if(word in vocab.keys()):
@@ -62,41 +59,42 @@ def coSim(docs):
     idfDict={}
 
     for column in docTermFreq.columns:
-        idfDict[column]= np.log((len(docs) +1 )/(1+ (docTermFreq[column] != 0).sum()))+1
+        idfDict[column]= np.log((len(docs))/((docTermFreq[column] != 0).sum()))
     """print("nilai IDF tiap term :")    
     print(docTermFreq)
     print()"""
 
         
-    #compute tf.idf matrix
+    #inisialisasi matriks TF-IDF
     docsTfIdfMat = np.zeros((len(docs),len(vocab)))
-    docTfIdfDf = pd.DataFrame(docsTfIdfMat ,columns=sorted(vocab.keys()))
+    docTfIdf = pd.DataFrame(docsTfIdfMat ,columns=sorted(vocab.keys()))
 
+    #menghitung TF-IDF
     docCount = 0
     for doc in docs:
         for key in idfDict.keys():
-            docTfIdfDf[key][docCount] = docTermFreq[key][docCount] * idfDict[key]
+            docTfIdf[key][docCount] = docTermFreq[key][docCount] * (idfDict[key]+1)
         docCount = docCount +1 
     """print("Nilai TF-IDF")    
-    print(docTfIdfDf)
+    print(docTfIdf)
     print()"""
 
+    """
     #compute cosine similarity
-    csim = cosine_similarity(docTfIdfDf.values.tolist(),docTfIdfDf.values.tolist())
-    """print("Tabel perbandingan cosine similarity :")
-    print(csim)
-    print()"""
+    csim = cosine_similarity(docTfIdf.values.tolist(),docTfIdf.values.tolist())
 
     hasil = []
     for x in csim[0]:
         hasil.append(x)
-    """print("Hasil cosine similairty (masih ada query):")
-    print(hasil)
-    print()"""
 
     hasil.pop(0) #hilangkan nilai cosine similarity untuk query sebab tidak dibutuhkan
-    """print("Hasil cosine similairty tanpa query:")
-    print(hasil)
-    print()"""
+    """
+
+    hasil = []
+    query = docTfIdf.iloc[0,:].to_list()
+    for i in range(1, len(docs)):
+        video = docTfIdf.iloc[i,:].to_list()
+        similarity = np.dot(query, video) / (np.sqrt(np.sum(np.power(query,2))) * np.sqrt(np.sum(np.power(video,2))))
+        hasil.append(similarity)
 
     return hasil
