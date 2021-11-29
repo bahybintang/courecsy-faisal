@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, flash
+from flask_cors import CORS
 from wtforms import Form, StringField, TextAreaField, validators
 import requests
 from isodate import parse_duration, parse_date #converting the ISO_8601 format
@@ -8,7 +9,7 @@ from csim import TF_IDF_Cosim
 from dataset import Silabus
 
 app = Flask(__name__)
-
+CORS(app)
 data_silabus = Silabus()
 
 
